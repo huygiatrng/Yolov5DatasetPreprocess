@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 import os
 
-directory = 'input1 frames have yellow'
-directory2 = 'input2 frames have yellow'
-directoryOutput = 'input1 frames have yellow after named'
+directory = 'inputvideo frames have yellow'
+directory2 = 'inputvideo frames have yellow'
+directoryOutput = 'inputvideo frames have yellow after named'
 count = 0
 
 for file in os.listdir(directory):
