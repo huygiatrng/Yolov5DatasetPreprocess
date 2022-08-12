@@ -2,25 +2,22 @@ import cv2
 import numpy as np
 import os
 
-directory = 'input1 frames'
+directory = 'inputvideo frames'             #directory of frames
 
 for file in os.listdir(directory):
     filename = os.path.join(directory, file)
-    # fileImage = "input2 frames/frame479.jpg"
 
     image = cv2.imread(filename)
 
-    # img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-    ly = np.array([43,186,183])
-    uy = np.array([96,253,243])
+    ly = np.array([43,186,183])         #low value of color in BGR (not RGB) format - default Yellow
+    uy = np.array([96,253,243])         #high value of color in BGR (not RGB) format - default Yellow
 
     gmask = cv2.inRange(image,ly,uy)
     color = cv2.bitwise_and(image,image,mask=gmask)
 
     pixels = cv2.countNonZero(gmask)
-    if pixels > 20:
-        cv2.imwrite("input1 frames have yellow/"+str(file), image)
-        print("saved "+str(file))
+    if pixels > 20:                     #threshold number of pixel
+        cv2.imwrite("input1 frames have yellow color/"+str(file), image)
+        print("Saved "+str(file))
     else:
-        print("Nope")
+        print("Skipped")
